@@ -1,4 +1,4 @@
-name: Dockerhub Image CI
+name: Dockerhub Image Push
 
 on:
   push:
@@ -20,4 +20,4 @@ jobs:
       uses: docker/build-push-action@v4
       with:
         push: true
-        tags: oluwatoseen/shola-app:v.1.0.1
+        tags: oluwatoseen/shola-app:v.1.0.2

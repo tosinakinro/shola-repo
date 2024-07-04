@@ -19,6 +19,9 @@ jobs:
       - name: List files in the repository
         run: ls -la
       
+      - name: Find package.json
+        run: find . -name "package.json"
+      
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:

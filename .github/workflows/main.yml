@@ -15,9 +15,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: List files in the repository
-        run: touch package.json
       
       - name: Set up Node.js
         uses: actions/setup-node@v3

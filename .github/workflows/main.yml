@@ -21,6 +21,9 @@ jobs:
         with:
           node-version: '16'
 
+      - name: Install dependencies
+        run: npm install
+
       - name: Pull latest changes
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
@@ -38,15 +41,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Install jq
+        run: sudo apt-get install -y jq
+      
       - name: Extract new version
         id: extract_version
         run: echo "NEW_VERSION=$(jq -r '.version' package.json)" >> $GITHUB_ENV
-
-      - name: Set new version
-        id: set_new_version
-        run: |
-          NEW_VERSION=$(node -p -e "require('./package.json').version")
-          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV  
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
